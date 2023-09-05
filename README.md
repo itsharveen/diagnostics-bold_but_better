@@ -1,5 +1,5 @@
 # Diagnostics project
-
+#
 Scripts go in the `scripts` directory.
 
 Library code (Python modules) goes in the `findoutlie` directory.
@@ -7,6 +7,8 @@ Library code (Python modules) goes in the `findoutlie` directory.
 You should put the code in this `findoutlie` directory on your Python PATH.
 
 This README file has instructions on how to get, validate and process the data.
+
+It belongs to the *Bold* But Better group. 
 
 ## Get the data
 
@@ -20,6 +22,19 @@ Add the hash_list file to Git:
 
 ```
 git add data/group-*/hash_list.txt
+git commit -m "Add hash list file"
+```
+
+Change directory back to root of repository
+
+```
+cd ..
+```
+
+Add the hash_list file to Git:
+
+```
+git add group-*/hash_list.txt
 git commit -m "Add hash list file"
 ```
 
