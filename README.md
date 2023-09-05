@@ -8,7 +8,7 @@ You should put the code in this `findoutlie` directory on your Python PATH.
 
 This README file has instructions on how to get, validate and process the data.
 
-It belongs to the *Bold* But Better group. 
+It belongs to the **Bold** But Better group. 
 
 ## Get the data
 
