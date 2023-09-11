@@ -8,6 +8,7 @@ Run as:
 from pathlib import Path
 import sys
 import hashlib
+import glob2 as glob
 
 
 def file_hash(filename):
@@ -24,11 +25,9 @@ def file_hash(filename):
         SHA1 hexadecimal hash string for contents of `filename`.
     """
     # Open the file, read contents as bytes.
+    file = Path(filename).read_bytes()
     # Calculate, return SHA1 has on the bytes from the file.
-    # This is a placeholder, replace it to write your solution.
-    raise NotImplementedError(
-        'This is just a template -- you are expected to code this.')
-
+    return hashlib.sha1(file).hexdigest()
 
 def validate_data(data_directory):
     """ Read ``data_hashes.txt`` file in `data_directory`, check hashes
@@ -54,7 +53,15 @@ def validate_data(data_directory):
     # If hash for filename is not the same as the one in the file, raise
     # ValueError
     # This is a placeholder, replace it to write your solution.
-    raise NotImplementedError('This is just a template -- you are expected to code this.')
+    local_path = Path(data_directory)
+    hashes = glob.glob(str(local_path) + "/*" + "/data_hashes.txt")
+    lines = hashes.read_text().splitlines()
+    for line in lines:
+        hash, filename = line.split()
+        filename_path = (str(local_path) + filename)
+        hash_act = file_hash(filename_path)
+        if hash_act != hash:
+            raise ValueError(f'Hash for {filename} is {hash_act}, which does not match the expected {hash}')
 
 
 def main():
